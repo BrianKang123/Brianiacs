@@ -1,4 +1,10 @@
-  1/13
-Added Repo
-Added Collaborators
-Drafted Final Project Idea
+1/13
+  Added Repo
+  Added Collaborators
+  Drafted Final Project Idea
+
+1/14
+  Added flag
+  Added propo
+  Added Woo.java
+  Added v0 iteration
