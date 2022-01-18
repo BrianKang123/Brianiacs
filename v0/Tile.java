@@ -1,7 +1,8 @@
 public class Tile {
+  private int position;
 
-  
-  public Tile(){
+  public Tile(int pos){
+    position = pos;
 
   }
 }

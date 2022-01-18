@@ -72,5 +72,12 @@ BW :: Added flag
       Added v0
       Brought devlog up to state
 BK :: Created team flag
-==============================================================
 
+2022-1-17
+--------------------------------------------------------------
+BW :: Created Character.java
+      Created Property.java
+      Created Tile.java
+      Created MediterraneanAvenue.java
+      Began game processes
+==============================================================
