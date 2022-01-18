@@ -3,13 +3,14 @@ public class Character{
   private int balance;
   private int number;
 
-  public Character(int number){
+  public Character(int num){
+    number = num;
     position = 0; //start on go
     balance = 1500; //starting balance is $1500
   }
 
   //Moves the Character forward by [tiles] tiles
-  public static int advance(int tiles){
+  public int advance(int tiles){
     position += tiles;
     //Checks if pass go
     if(position > 40){
@@ -21,7 +22,7 @@ public class Character{
 
 
   //Pays [other] [amount] dollars
-  public static int pay(Character other, int amount){
+  public void pay(Character other, int amount){
     other.addBalance(amount);
     subtractBalance(amount);
   }

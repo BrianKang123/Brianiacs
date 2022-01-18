@@ -1,44 +1,45 @@
 public class Woo{
   private Tile[] board;
-  int players;
+
 
   public Woo(){
     board = new Tile[40];
-    players = 4;
     newGame();
   }
 
   public static void newGame(){
     //randomize turn order
     int playerTurn = (int)(Math.random()*4) + 1;
+    System.out.println("Your turn is number " + playerTurn + "!");
+    Character p1, p2, p3, p4;
     if(playerTurn == 1){
-      Character 1 = new Player(1);
-      Character 2 = new AI(2);
-      Character 3 = new AI(3);
-      Character 4 = new AI(4);
+      p1 = new Player(1);
+      p2 = new AI(2);
+      p3 = new AI(3);
+      p4 = new AI(4);
     }
     if(playerTurn == 2){
-      Character 1 = new AI(1);
-      Character 2 = new Player(2);
-      Character 3 = new AI(3);
-      Character 4 = new AI(4);
+      p1 = new AI(1);
+      p2 = new Player(2);
+      p3 = new AI(3);
+      p4 = new AI(4);
     }
     if(playerTurn == 3){
-      Character 1 = new AI(1);
-      Character 2 = new AI(2);
-      Character 3 = new Player(3);
-      Character 4 = new AI(4);
+      p1 = new AI(1);
+      p2 = new AI(2);
+      p3 = new Player(3);
+      p4 = new AI(4);
     }
-    if(playerTurn == 4){
-      Character 1 = new AI(1);
-      Character 2 = new AI(2);
-      Character 3 = new AI(3);
-      Character 4 = new Player(4);
+    else{
+      p1 = new AI(1);
+      p2 = new AI(2);
+      p3 = new AI(3);
+      p4 = new Player(4);
     }
-    1.changePos(0);
-    2.changePos(0);
-    3.changePos(0);
-    4.changePos(0);
+    p1.changePos(0);
+    p2.changePos(0);
+    p3.changePos(0);
+    p4.changePos(0);
   }
 
   //rolls 2 die
@@ -47,12 +48,13 @@ public class Woo{
   }
 
   //plays a turn for [char]. Returns bankruptcy state.
-  public static boolean playTurn(Character char){
+  //public static boolean playTurn(Character char){
 
-  }
+  //}
 
   public static void main(String[] StandardOil){
     Woo game = new Woo();
+    int players = 4;
     System.out.println(roll());
     //Game lasts as long as there is still 2 or more players
     while(players > 1){
@@ -63,7 +65,7 @@ public class Woo{
       //player 3 turn
 
       //player 4 turn
-
+      break; //diag
     }
 
 

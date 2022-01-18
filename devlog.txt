@@ -82,4 +82,10 @@ BW :: Created Character.java
       Began game processes
 BK :: Created Game Proposal
 JF :: Edited Game Proposal
+
+2022-1-18
+--------------------------------------------------------------
+BW :: Created Player.java
+      Created AI.java
+      Shooting bugs
 ==============================================================
