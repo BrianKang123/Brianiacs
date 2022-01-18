@@ -80,4 +80,6 @@ BW :: Created Character.java
       Created Tile.java
       Created MediterraneanAvenue.java
       Began game processes
+BK :: Created Game Proposal
+JF :: Edited Game Proposal
 ==============================================================
