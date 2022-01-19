@@ -6,18 +6,23 @@ public class Woo{
   private Token p1, p2, p3, p4;
   private InputStreamReader isr;
   private BufferedReader in;
+  private int players;
 
 
   public Woo(){
     board = new Tile[40];
+    players = 4;
+    isr = new InputStreamReader(System.in);
+    in = new BufferedReader(isr);
     newGame();
   }
 
-  //plays a turn for [tok]. Returns bankruptcy state.
-  public void playTurn(Token tok){
-    System.out.println("Rolling your roll: ");
+  //plays a turn for an AI. The AI will currently buy a property if it owns more than 10x the cost of the property.
+  public void playTurnAI(Token tok){
+    System.out.println("Current Balance of player " + tok.getNumber() + ": $" + tok.getBalance());
+    System.out.println("Rolling the roll of player " + tok.getNumber() + ": ");
     int spaces = roll();
-    System.out.println("Player " + tok.getPlayer() + " rolled a " + spaces);
+    System.out.println("Player " + tok.getNumber() + " rolled a " + spaces);
     //advance the spaces
     tok.advance(spaces);
     //current space, for future reference
@@ -28,11 +33,68 @@ public class Woo{
       Property currentProperty = (Property)board[tok.getPos()];
 
       //If the Token lands on a property that is unowned
-      if(currentProperty.getOwned() == 0){
+      if(currentProperty.getOwned() == null){
+        System.out.println("Player " + tok.getNumber() + " landed on tile " + currentProperty.getPos() + ", " + currentProperty.getName() + ".");
+        if(currentProperty.getCost() < tok.getBalance() / 10){
+          currentProperty.buy(tok);
+          System.out.println("Player " + tok.getNumber() + " just bought " + currentProperty.getName() + " for $" + currentProperty.getCost() + ".");
+          System.out.println("Current Balance of player " + tok.getNumber() + ": $" + tok.getBalance());
+        }
+        //ifelse(){} //Case where AI has less tolerance for a set
+        else{
+          System.out.println("Player " + tok.getNumber() + " passes on " + currentProperty.getName() + ".");
+        }
+
+      }
+      //If the Token lands on an owned property that is theirs
+      else if(currentProperty.getOwned().getNumber() == tok.getNumber()){
+        System.out.println("Player " + tok.getNumber() + " landed on a property that you own. There is no need to do anything this turn.");
+      }
+      //If the Token lands on an owned property that is NOT theirs
+      else{
+        System.out.println("Player " + tok.getNumber() + " landed on " + currentProperty.getName() + ", owned by player " + currentProperty.getOwned().getNumber() + "." );
+        System.out.println("Player " + tok.getNumber() + " must pay player " + currentProperty.getOwned().getNumber() + " $" + currentProperty.getRent() + ".");
+        if(tok.getBalance() > currentProperty.getRent()){
+          tok.pay(currentProperty.getOwned(), currentProperty.getRent());
+          System.out.println("Current Balance of player " + tok.getNumber() + ": $" + tok.getBalance());
+        }
+        else{
+          tok.pay(currentProperty.getOwned(), currentProperty.getRent());
+          System.out.println("The rent had to be paid by the bank, as player " + tok.getNumber() + " does not have enough.");
+          System.out.println("Player " + tok.getNumber() + " has gone bankrupt.");
+          players -= 1;
+        }
+      }
+
+    }
+    System.out.println("----------------------------------------\n");
+  }
+
+  //plays a turn for [tok]. Returns bankruptcy state.
+  public void playTurn(Token tok){
+    System.out.println("! YOUR TURN !");
+    System.out.println("Current Balance: $" + tok.getBalance());
+    System.out.println("Rolling your roll: ");
+    int spaces = roll();
+    System.out.println("You rolled a " + spaces);
+    //advance the spaces
+    tok.advance(spaces);
+    //current space, for future reference
+    int cur = tok.getPos();
+    int response = 0;
+    //if the current tile is a property
+    if(board[tok.getPos()] instanceof Property){
+      Property currentProperty = (Property)board[tok.getPos()];
+
+      //If the Token lands on a property that is unowned
+      if(currentProperty.getOwned() == null){
         try{
           System.out.println("You landed on tile " + currentProperty.getPos() + ", " + currentProperty.getName() + ".");
           System.out.println("This property is unowned, do you wish to buy it for $" + currentProperty.getCost() + "?");
-          System.out.println("1 for yes, 2 for no, 3 for further details about the property");
+          System.out.println("1 for yes");
+          System.out.println("2 for no");
+          System.out.println("3 for info about the property");
+          System.out.println("4 for deed titleships of other players");
           response = Integer.parseInt(in.readLine());
         }
         catch(IOException e){}
@@ -41,6 +103,8 @@ public class Woo{
             //Has enough money
             if(currentProperty.getCost() < tok.getBalance()){
               currentProperty.buy(tok);
+              System.out.println("You bought " + currentProperty.getName() + "!");
+              System.out.println("Current Balance: $" + tok.getBalance());
             }
             //Does not have enough money
             else{
@@ -48,11 +112,15 @@ public class Woo{
             }
           }
           //Do not buy
-          if(response == 2){
-
+          else if(response == 2){
+            System.out.println("You pass on the property");
           }
           //More info, code later
-          if(response == 3){
+          else if(response == 3){
+            System.out.println("WORK IN PROGRESS!");
+          }
+          //More info about others, code later
+          else if(response == 4){
             System.out.println("WORK IN PROGRESS!");
           }
           //???
@@ -62,15 +130,27 @@ public class Woo{
 
       }
       //If the Token lands on an owned property that is theirs
-      if(currentProperty.getOwned() == tok.getPlayer()){
-
+      else if(currentProperty.getOwned().getNumber() == tok.getNumber()){
+        System.out.println("You landed on a property that they own. There is no need to do anything this turn.");
       }
       //If the Token lands on an owned property that is NOT theirs
       else{
-
+        System.out.println("You landed on " + currentProperty.getName() + ", owned by player " + currentProperty.getOwned().getNumber() + "." );
+        System.out.println("You must pay player " + currentProperty.getOwned().getNumber() + " $" + currentProperty.getRent() + ".");
+        if(tok.getBalance() > currentProperty.getRent()){
+          tok.pay(currentProperty.getOwned(), currentProperty.getRent());
+          System.out.println("Current Balance: $" + tok.getBalance());
+        }
+        else{
+          tok.pay(currentProperty.getOwned(), currentProperty.getRent());
+          System.out.println("The rent had to be paid by the bank, as you have no money left.");
+          System.out.println("You have gone bankrupt.");
+          players -= 1;
+        }
       }
 
     }
+    System.out.println("----------------------------------------\n");
   }
 
   public void newBoard(Tile[] bored){
@@ -115,10 +195,10 @@ public class Woo{
       p4 = new Player(4);
     }
     */
-    this.p1 = new Player(1);
-    this.p2 = new AI(2);
-    this.p3 = new AI(3);
-    this.p4 = new AI(4);
+    this.p1 = new Token(1);
+    this.p2 = new Token(2);
+    this.p3 = new Token(3);
+    this.p4 = new Token(4);
     System.out.println("You are player 1.");
     this.p1.changePos(0);
     this.p2.changePos(0);
@@ -133,18 +213,28 @@ public class Woo{
 
   public static void main(String[] StandardOil){
     Woo game = new Woo();
-    int players = 4;
+    int turnCounter = 0;
 
     //Game lasts as long as there is still 2 or more players
-    while(players > 1){
+    //However the game will end if the player (you) goes bankrupt because that would be really boring.
+    while(game.players > 1 || game.p1.getBankrupt() == true){
+      System.out.println("TURN " + turnCounter + "\n=======================================\n");
       //player 1 turn
       game.playTurn(game.p1);
       //player 2 turn
-
+      if(!game.p2.getBankrupt()){
+        game.playTurnAI(game.p2);
+      }
       //player 3 turn
-
+      if(!game.p3.getBankrupt()){
+        game.playTurnAI(game.p3);
+      }
       //player 4 turn
-      break; //diag
+      if(!game.p2.getBankrupt()){
+        game.playTurnAI(game.p2);
+      }
+
+      turnCounter += 1;
     }
 
 

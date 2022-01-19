@@ -1,5 +1,5 @@
 public class Property extends Tile{
-  protected int owned;
+  protected Token owned;  //Null is unowned
   protected int cost;
   protected int rent;
   protected int houses;
@@ -12,7 +12,6 @@ public class Property extends Tile{
 
   public Property(int pos){
     super(pos);
-    owned = 0;  //0 is not owned, 1-4 is owned by player 1-4
     houses = 0;
     mortgaged = false;
   }
@@ -30,7 +29,7 @@ public class Property extends Tile{
   }
 
   //returns owner, 0 for no owner
-  public int getOwned(){
+  public Token getOwned(){
     return owned;
   }
 

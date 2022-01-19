@@ -1,5 +1,6 @@
 public class Tile {
-  private int position;
+  protected int position;
+  protected String name;
 
   public Tile(int pos){
     position = pos;

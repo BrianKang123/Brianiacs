@@ -16,5 +16,9 @@ public class MediterraneanAvenue extends Property{
   */
   public MediterraneanAvenue(int pos){
     super(pos);
+    cost = 60;
+    rent = 2;
+    set = 0; //change value later
+    name = "Mediterranean Avenue";
   }
 }

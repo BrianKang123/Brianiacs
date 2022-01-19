@@ -1,18 +1,17 @@
 public class Property extends Tile{
-  private int owned;
-  private int cost;
-  private int rent;
-  private int houses;
-  private String name;
-  private int set; //The set that the property belongs to
-  private int remaningSet; //How many pieces in the set are not owned by this player
-  private int houseCost;
-  private boolean mortgaged;
+  protected Token owned;  //Null is unowned
+  protected int cost;
+  protected int rent;
+  protected int houses;
+  protected String name;
+  protected int set; //The set that the property belongs to
+  protected int remaningSet; //How many pieces in the set are not owned by this player
+  protected int houseCost;
+  protected boolean mortgaged;
 
 
   public Property(int pos){
     super(pos);
-    owned = 0;  //0 is not owned, 1-4 is owned by player 1-4
     houses = 0;
     mortgaged = false;
   }
@@ -30,7 +29,7 @@ public class Property extends Tile{
   }
 
   //returns owner, 0 for no owner
-  public int getOwned(){
+  public Token getOwned(){
     return owned;
   }
 
@@ -46,5 +45,15 @@ public class Property extends Tile{
   //returns house cost
   public int getHouseCost(){
     return houseCost;
-  };
+  }
+
+  //returns cost of deed
+  public int getCost(){
+    return cost;
+  }
+
+  //returns the position of deed
+  public int getPos(){
+    return position;
+  }
 }
