@@ -92,6 +92,7 @@ BW :: Created Player.java
       Renamed char to tok
       Renamed Character.java to Token.java
       Edited code to comply with Token.java 
+BK :: Created To Do List for Plans
 JF :: Created UML Diagram
       Fixed propro.pdf
 ==============================================================
