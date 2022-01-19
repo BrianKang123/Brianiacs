@@ -1,4 +1,4 @@
-Public Property extends Tile{
+public class Property extends Tile{
   private int owned;
   private int cost;
   private int rent;
@@ -10,8 +10,8 @@ Public Property extends Tile{
   private boolean mortgaged;
 
 
-  public Property(){
-    super();
+  public Property(int pos){
+    super(pos);
     owned = 0;  //0 is not owned, 1-4 is owned by player 1-4
     houses = 0;
     mortgaged = false;

@@ -88,4 +88,8 @@ JF :: Edited Game Proposal
 BW :: Created Player.java
       Created AI.java
       Shooting bugs
+      Updated gitignore
+      Renamed char to tok
+      Renamed Character.java to Token.java
+      Edited code to comply with Token.java 
 ==============================================================

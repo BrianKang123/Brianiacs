@@ -7,11 +7,45 @@ public class Woo{
     newGame();
   }
 
-  public static void newGame(){
+  //plays a turn for [tok]. Returns bankruptcy state.
+  public void playTurn(Token tok){
+    int spaces = roll();
+    System.out.println(tok.getPlayer() + " rolled a " + spaces);
+    //advance the spaces
+    tok.advance(spaces);
+    //current space, for future reference
+    int cur = tok.getPos();
+    //if the current tile is a property
+    if(board[tok.getPos()] instanceof Property){
+      //If the Token lands on a property that is unowned
+      if((Property)(board[cur]).getOwned() == 0){
+
+      }
+      //If the Token lands on an owned property that is theirs
+      if((Property)(board[cur]).getOwned() == tok.getPlayer()){
+
+      }
+      //If the Token lands on an owned property that is NOT theirs
+      else{
+
+      }
+    }
+    return true;
+  }
+
+  public void newBoard(Tile[] bored){
+    for(int i = 0 ; i < 40 ; i += 1){
+      bored[i] = new MediterraneanAvenue(i);
+    }
+  }
+
+  public void newGame(){
+    //create the board (WIP!!!)
+    newBoard(this.board);
     //randomize turn order
     int playerTurn = (int)(Math.random()*4) + 1;
     System.out.println("Your turn is number " + playerTurn + "!");
-    Character p1, p2, p3, p4;
+    Token p1, p2, p3, p4;
     if(playerTurn == 1){
       p1 = new Player(1);
       p2 = new AI(2);
@@ -44,22 +78,17 @@ public class Woo{
 
   //rolls 2 die
   public static int roll(){
-      return (int)(Math.random() * 12) + 1;
+      return (int)(Math.random() * 11) + 2;
   }
-
-  //plays a turn for [char]. Returns bankruptcy state.
-  //public static boolean playTurn(Character char){
-
-  //}
 
   public static void main(String[] StandardOil){
     Woo game = new Woo();
     int players = 4;
-    System.out.println(roll());
+
     //Game lasts as long as there is still 2 or more players
     while(players > 1){
       //player 1 turn
-
+      playTurn(p1);
       //player 2 turn
 
       //player 3 turn

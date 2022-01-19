@@ -1,16 +1,18 @@
-public class Character{
+//Token is the name of the items you play with in monopoly
+public class Token{
   private int position;
   private int balance;
   private int number;
 
-  public Character(int num){
+  public Token(int num){
     number = num;
     position = 0; //start on go
     balance = 1500; //starting balance is $1500
   }
 
-  //Moves the Character forward by [tiles] tiles
+  //Moves the Token forward by [tiles] tiles
   public int advance(int tiles){
+
     position += tiles;
     //Checks if pass go
     if(position > 40){
@@ -22,7 +24,7 @@ public class Character{
 
 
   //Pays [other] [amount] dollars
-  public void pay(Character other, int amount){
+  public void pay(Token other, int amount){
     other.addBalance(amount);
     subtractBalance(amount);
   }
@@ -33,16 +35,18 @@ public class Character{
   }
 
   //decreases the balance by [amount]
-  public void subtractBalance(int amount){
+  public boolean subtractBalance(int amount){
     balance -= amount;
+    return true;
+    //also check if you can do the action at all
   } //check bankruptcy
 
-  //changes the character position
+  //changes the Token position
   public void changePos(int pos){
     position = pos;
   }
 
-  //returns the position of the character
+  //returns the position of the Token
   public int getPos(){
     return position;
   }
@@ -50,6 +54,11 @@ public class Character{
   //returns the number of the player
   public int getPlayer(){
     return number;
+  }
+
+  //returns the balance of the players
+  public int getBalance(){
+    return balance;
   }
 
 
