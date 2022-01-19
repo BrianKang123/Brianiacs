@@ -93,4 +93,5 @@ BW :: Created Player.java
       Renamed Character.java to Token.java
       Edited code to comply with Token.java 
 JF :: Created UML Diagram
+      Fixed propro.pdf
 ==============================================================
