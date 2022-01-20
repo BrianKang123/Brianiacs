@@ -19,6 +19,6 @@ public class OrientalAvenue extends Property{
     cost = 60;
     rent = 2;
     set = 0; //change value later
-    name = "Mediterranean Avenue";
+    name = "Oriental Avenue";
   }
 }
