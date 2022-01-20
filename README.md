@@ -1,7 +1,7 @@
 # Brianiacs
 # Jing Yi Feng, Brian Kang, Brian Wang
 ## Project Description: 
-##### We created monopoly using java programming skills that we obtained this semester. The game consists of the player (you) and three programmed AI's. Each player take turns rolling the die to determine how many spots you move. You can choose to buy or sell property as well as draw chance cards and community chest to test your luck. Last person stnading with money wins the game. Good luck and have fun!
+#### We created monopoly using java programming skills that we obtained this semester. The game consists of the player (you) and three programmed AI's. Each player take turns rolling the die to determine how many spots you move. You can choose to buy or sell property as well as draw chance cards and community chest to test your luck. Last person stnading with money wins the game. Good luck and have fun!
 
 ## How to Launch:
 ##### 1. Clone into git@github.com:BrianKang123/Brianiacs.git in your terminal
