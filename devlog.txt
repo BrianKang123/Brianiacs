@@ -101,5 +101,25 @@ JF :: Created UML Diagram
       
 2022-01-19
 --------------------------------------------------------------
-
+JF :: Updated README with how-to-launch instructions
+      Created AtlanticAvenue.java
+              Boardwalk.java
+              ConnecticutAvenue.java
+              IllinoisAvenue.java
+              IndianaAvenue.java
+              KentuckyAvenue.java
+              MarvinGardens.java
+              NewYorkAvenue.java
+              NorthCarolinaAvenue.java
+              OrientalAvenue.java
+              PacificAvenue.java
+              ParkPlace.java
+              PennsylvaniaAvenue.java
+              St.CharlesPlace.java
+              St.JamesPlace.java
+              StatesAvenue.java
+              TennesseeAvenue.java
+              VentnorAvenue.java
+              VermontAvenue.java
+              VirginiaAvenue.java
 ==============================================================
