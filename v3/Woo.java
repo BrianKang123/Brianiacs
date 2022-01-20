@@ -150,6 +150,24 @@ public class Woo{
       }
 
     }
+
+    //If land on tax, hardcoded values?
+    else if(board[tok.getPos()] instanceof Tax){
+      //I should probably hardcode this
+
+    }
+
+    //If land on Chance
+    else if(board[tok.getPos()] instanceof Chance){
+
+    }
+
+    //If land on Community Chest
+    else if(board[tok.getPos()] instanceof Chest){
+
+    }
+
+
     System.out.println("----------------------------------------\n");
   }
 
@@ -160,7 +178,7 @@ public class Woo{
     newBoard[2] = new Chest(2); //TODO
     newBoard[3] = new BalticAvenue(3);
     newBoard[4] = new Tax(4); //TODO
-    newBoard[5] = new Rail1(5); //TODO
+    newBoard[5] = new Rail(5); //TODO
     newBoard[6] = new OrientalAvenue(6);
     newBoard[7] = new Chance(7);  //TODO
     newBoard[8] = new VermontAvenue(8);
@@ -170,7 +188,7 @@ public class Woo{
     newBoard[12] = new Tax(12);
     newBoard[13] = new StatesAvenue(13);
     newBoard[14] = new VirginiaAvenue(14);
-    newBoard[15] = new Rail2(15);
+    newBoard[15] = new Rail(15);
     newBoard[16] = new StJamesPlace(16);
     newBoard[17] = new Chest(17);
     newBoard[18] = new TennesseeAvenue(18);
@@ -180,9 +198,24 @@ public class Woo{
     newBoard[22] = new Chance(22);
     newBoard[23] = new IndianaAvenue(23);
     newBoard[24] = new IllinoisAvenue(24);
+    newBoard[25] = new Rail(25);
+    newBoard[26] = new AtlanticAvenue(26);
+    newBoard[27] = new VentnorAvenue(27);
+    newBoard[28] = new tax(28);
+    newBoard[29] = new MarvinGardens(29);Tile
+    newBoard[30] = new Tile(30);
+    newBoard[31] = new PacificAvenue(31);
+    newBoard[32] = new NorthCarolinaAvenue(32);
+    newBoard[33] = new Chest(33);
+    newBoard[34] = new PennsylvaniaAvenue(34);
+    newBoard[35] = new Rail(35);
+    newBoard[36] = new Chance(36);
+    newBoard[37] = new ParkPlace(37);
+    newBoard[38] = new Tax(38);
+    newBoard[39] = new Boardwalk(39);
 
 
-    newBoard[30] = new
+
   }
 
   public void newGame(){
