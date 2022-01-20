@@ -122,4 +122,5 @@ JF :: Updated README with how-to-launch instructions
               VentnorAvenue.java
               VermontAvenue.java
               VirginiaAvenue.java
+      Updated project description in README.
 ==============================================================
