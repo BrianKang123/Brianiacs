@@ -98,4 +98,8 @@ BW :: Created Player.java
 BK :: Created To Do List for Plans
 JF :: Created UML Diagram
       Fixed propro.pdf
+      
+2022-01-19
+--------------------------------------------------------------
+
 ==============================================================
