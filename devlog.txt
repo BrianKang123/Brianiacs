@@ -92,13 +92,10 @@ BW :: Created Player.java
       Renamed char to tok
       Renamed Character.java to Token.java
       Edited code to comply with Token.java
-      Created new methods to play turns
-      Game actually works now?
-      Deleted Player.java and AI.java, they are not needed
 BK :: Created To Do List for Plans
 JF :: Created UML Diagram
       Fixed propro.pdf
-      
+
 2022-01-19
 --------------------------------------------------------------
 JF :: Updated README with how-to-launch instructions
@@ -124,4 +121,11 @@ JF :: Updated README with how-to-launch instructions
               VirginiaAvenue.java
       Updated project description in README.
  BK :: Created Flow Chart
+ BW :: Created new methods to play turns
+       Game actually works now?
+       Deleted Player.java and AI.java, they are not needed
+
+ 2022-01-20
+ -------------------------------------------------------------
+ BW :: Created v3
 ==============================================================
