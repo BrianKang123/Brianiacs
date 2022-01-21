@@ -139,4 +139,12 @@ JF :: Updated README with how-to-launch instructions
        Created WaterWorks.java
        Created ElectricCompany.java
        Added functionality of Chest, Chance, and taxes to playTurns
+
+2022-01-21
+-------------------------------------------------------------
+  BW :: Created v4
+        Fixed issue where turn ends when requesting data about the current tile or deed
+        Implemented rudimentary special tiles (go, just visiting, free parking, go to jail)
+        reminder: Add reference to properties in token
+
 ==============================================================

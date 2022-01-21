@@ -16,8 +16,8 @@ public class Boardwalk	extends Property{
   */
   public Boardwalk(int pos){
     super(pos);
-    cost = 60;
-    rent = 2;
+    cost = 400;
+    rent = 50;
     set = 0; //change value later
     name = "Boardwalk";
   }

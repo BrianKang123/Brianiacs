@@ -154,7 +154,7 @@ public class Woo{
   }
 
   public void newBoard(Tile[] bored){
-    for(int i = 0 ; i < 40 ; i += 1){
+    for(int i = 0 ; i < 40 ; i += 1){05b
       bored[i] = new MediterraneanAvenue(i);
     }
   }
@@ -198,7 +198,7 @@ public class Woo{
     this.p1 = new Token(1);
     this.p2 = new Token(2);
     this.p3 = new Token(3);
-    this.p4 = new Token(4);
+    thiatom://teletype/portal/13cd23c8-2958-4946-9b40-354f4618305bs.p4 = new Token(4);
     System.out.println("You are player 1.");
     this.p1.changePos(0);
     this.p2.changePos(0);

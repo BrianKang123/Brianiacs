@@ -28,6 +28,22 @@ public class Woo{
     //current space, for future reference
     int cur = tok.getPos();
     int response = 0;
+
+    //if the current tile is a special tile (go, just visiting, free parking, go to jail)
+    if(cur == 0){
+      System.out.println("You landed on Go!");
+    }
+    if(cur == 9){
+      System.out.println("You landed on Just Visiting! Nothing happens.");
+    }
+    if(cur == 19){
+      System.out.println("You landed on Free Parking! Nothing happens.");
+    }
+    if(cur == 29){
+      System.out.println("You landed on Go To Jail... (WORK IN PROGRESS)");
+    }
+
+
     //if the current tile is a property
     if(board[tok.getPos()] instanceof Property){
       Property currentProperty = (Property)board[tok.getPos()];
@@ -149,55 +165,56 @@ public class Woo{
 
       //If the Token lands on a property that is unowned
       if(currentProperty.getOwned() == null){
-        try{
-          System.out.println("You landed on tile " + currentProperty.getPos() + ", " + currentProperty.getName() + ".");
-          System.out.println("This property is unowned, do you wish to buy it for $" + currentProperty.getCost() + "?");
-          System.out.println("1 for yes");
-          System.out.println("2 for no");
-          System.out.println("3 for info about the property");
-          System.out.println("4 for deed titleships of other players");
-          response = Integer.parseInt(in.readLine());
-        }
-        catch(IOException e){}
-          //More info, code later
-          if(response == 3){
-            System.out.println("WORK IN PROGRESS!");
+        //turn only advances if property is bought or abandoned
+        while(response != 1 || response != 2){
+          try{
+            System.out.println("You landed on tile " + currentProperty.getPos() + ", " + currentProperty.getName() + ".");
             System.out.println("This property is unowned, do you wish to buy it for $" + currentProperty.getCost() + "?");
             System.out.println("1 for yes");
             System.out.println("2 for no");
+            System.out.println("3 for info about the property");
+            System.out.println("4 for your deeds");
+            response = Integer.parseInt(in.readLine());
           }
-
-          //More info about others, code later
-          if(response == 4){
-            System.out.println("WORK IN PROGRESS!");
-            System.out.println("This property is unowned, do you wish to buy it for $" + currentProperty.getCost() + "?");
-            System.out.println("1 for yes");
-            System.out.println("2 for no");
-          }
-
-          //Buy
-          if(response == 1){
-            //Has enough money
-            if(currentProperty.getCost() < tok.getBalance()){
-              currentProperty.buy(tok);
-              System.out.println("You bought " + currentProperty.getName() + "!");
-              System.out.println("Current Balance: $" + tok.getBalance());
+          catch(IOException e){}
+            //More info, code later
+            if(response == 3){
+              System.out.println("Name: " + currentProperty.getName());
+              System.out.println("Cost: " + currentProperty.getCost());
+              System.out.println("Rent: " + currentProperty.getRent());
+              System.out.println("Position: " + currentProperty.getPos());
             }
-            //Does not have enough money
+
+            //More info about others, code later
+            else if(response == 4){
+              System.out.println("Title Deeds owned by you: ");
+              System.out.println("Player 1 (you):");
+              System.out.println(tok.getProperties());
+            }
+
+            //Buy
+            else if(response == 1){
+              //Has enough money
+              if(currentProperty.getCost() < tok.getBalance()){
+                currentProperty.buy(tok);
+                System.out.println("You bought " + currentProperty.getName() + "!");
+                System.out.println("Current Balance: $" + tok.getBalance());
+              }
+              //Does not have enough money
+              else{
+                System.out.println("You do not have enough!");
+              }
+            }
+            //Do not buy
+            else if(response == 2){
+              System.out.println("You pass on the property");
+            }
+
+            //???
             else{
-              System.out.println("You do not have enough!");
+              System.out.println("Please enter a valid response (WORK IN PROGRESS)");
             }
           }
-          //Do not buy
-          else if(response == 2){
-            System.out.println("You pass on the property");
-          }
-
-          //???
-          else{
-            System.out.println("Please enter a valid response (WORK IN PROGRESS)");
-          }
-
       }
       //If the Token lands on an owned property that is theirs
       else if(currentProperty.getOwned().getNumber() == tok.getNumber()){

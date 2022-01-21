@@ -16,8 +16,8 @@ public class VermontAvenue extends Property{
   */
   public VermontAvenue(int pos){
     super(pos);
-    cost = 60;
-    rent = 2;
+    cost = 100;
+    rent = 6;
     set = 0; //change value later
     name = "Vermont Avenue";
   }
