@@ -63,10 +63,71 @@ public class Woo{
           System.out.println("The rent had to be paid by the bank, as player " + tok.getNumber() + " does not have enough.");
           System.out.println("Player " + tok.getNumber() + " has gone bankrupt.");
           players -= 1;
+          tok.changeBankrupt(true);
         }
       }
 
     }
+
+    //If land on tax, hardcoded values?
+    //4, 12, 28, 38
+    else if(tok.getPos() == 4 || tok.getPos() == 38){
+      //I should probably hardcode this
+
+      //Income Tax, $200
+      if(tok.getPos() == 4){
+        if(tok.getBalance() > 200){
+          tok.subtractBalance(200);
+          System.out.println("Player " + tok.getNumber() + " landed on Income Tax, you must pay $200!");
+          System.out.println("Current Balance of player " + tok.getNumber() + ": $" + tok.getBalance());
+        }
+        else{
+          System.out.println("Player " + tok.getNumber() + " didn't have enough money to pay the tax!");
+          System.out.println("Player " + tok.getNumber() + " have gone bankrupt.");
+          players -= 1;
+          tok.changeBankrupt(true);
+        }
+      }
+
+      //Luxury Tax, $100
+      if(tok.getPos() == 38){
+        if(tok.getBalance() > 100){
+          tok.subtractBalance(100);
+          System.out.println("Player " + tok.getNumber() + " landed on Luxury Tax, you must pay $100!");
+          System.out.println("Current Balance of player " + tok.getNumber() + ": $" + tok.getBalance());
+        }
+        else{
+          System.out.println("Player " + tok.getNumber() + " didn't have enough money to pay the tax!");
+          System.out.println("Player " + tok.getNumber() + " have gone bankrupt.");
+          players -= 1;
+          tok.changeBankrupt(true);
+        }
+      }
+
+    }
+
+    //If land on Chance
+    else if(board[tok.getPos()] instanceof Chance){
+      System.out.println("Player " + tok.getNumber() + " landed on a Chance spot!");
+      Chance currentChance = (Chance)(board[tok.getPos()]);
+      currentChance.draw(tok);
+    }
+
+    //If land on Community Chest
+    else if(board[tok.getPos()] instanceof Chest){
+      System.out.println("Player " + tok.getNumber() + " landed on a Community Chest spot!");
+      Chest currentChest = (Chest)(board[tok.getPos()]);
+      currentChest.draw(tok);
+    }
+
+    //Failsafe check to make sure the player still has positive balance, ie. they get a negative balance chance card
+    if(tok.getBalance() < 0){
+      System.out.println("Player " + tok.getNumber() + " ran out of money!");
+      System.out.println("Player " + tok.getNumber() + " went bankrupt!");
+      players -= 1;
+      tok.changeBankrupt(true);
+    }
+
     System.out.println("----------------------------------------\n");
   }
 
@@ -146,25 +207,69 @@ public class Woo{
           System.out.println("The rent had to be paid by the bank, as you have no money left.");
           System.out.println("You have gone bankrupt.");
           players -= 1;
+          tok.changeBankrupt(true);
         }
       }
 
     }
 
     //If land on tax, hardcoded values?
-    else if(board[tok.getPos()] instanceof Tax){
+    //4, 12, 28, 38
+    else if(tok.getPos() == 4 || tok.getPos() == 38){
       //I should probably hardcode this
+
+      //Income Tax, $200
+      if(tok.getPos() == 4){
+        if(tok.getBalance() > 200){
+          tok.subtractBalance(200);
+          System.out.println("You landed on Income Tax, you must pay $200!");
+          System.out.println("Current Balance: $" + tok.getBalance());
+        }
+        else{
+          System.out.println("You didn't have enough money to pay the tax!");
+          System.out.println("You have gone bankrupt.");
+          players -= 1;
+          tok.changeBankrupt(true);
+        }
+      }
+
+      //Luxury Tax, $100
+      if(tok.getPos() == 38){
+        if(tok.getBalance() > 100){
+          tok.subtractBalance(100);
+          System.out.println("You landed on Luxury Tax, you must pay $100!");
+          System.out.println("Current Balance: $" + tok.getBalance());
+        }
+        else{
+          System.out.println("You didn't have enough money to pay the tax!");
+          System.out.println("You have gone bankrupt.");
+          players -= 1;
+          tok.changeBankrupt(true);
+        }
+      }
 
     }
 
     //If land on Chance
     else if(board[tok.getPos()] instanceof Chance){
-
+      System.out.println("You landed on a Chance spot!");
+      Chance currentChance = (Chance)(board[tok.getPos()]);
+      currentChance.draw(tok);
     }
 
     //If land on Community Chest
     else if(board[tok.getPos()] instanceof Chest){
+      System.out.println("You landed on a Community Chest spot!");
+      Chest currentChest = (Chest)(board[tok.getPos()]);
+      currentChest.draw(tok);
+    }
 
+    //Failsafe check to make sure the player still has positive balance, ie. they get a negative balance chance card
+    if(tok.getBalance() < 0){
+      System.out.println("You ran out of money!");
+      System.out.println("You went bankrupt!");
+      players -= 1;
+      tok.changeBankrupt(true);
     }
 
 
@@ -177,42 +282,43 @@ public class Woo{
     newBoard[1] = new MediterraneanAvenue(1);
     newBoard[2] = new Chest(2); //TODO
     newBoard[3] = new BalticAvenue(3);
-    newBoard[4] = new Tax(4); //TODO
-    newBoard[5] = new Rail(5); //TODO
+    newBoard[4] = new Tile(4); //HARDCODED TAX
+    newBoard[5] = new ReadingRailroad(5); //TODO
     newBoard[6] = new OrientalAvenue(6);
     newBoard[7] = new Chance(7);  //TODO
     newBoard[8] = new VermontAvenue(8);
-    newBoard[9] = new ConneticutAvenue(9);
-    newBoard[10] = new Tile(10);
+    newBoard[9] = new ConnecticutAvenue(9);
+    newBoard[10] = new Tile(10);  //Just visiting
     newBoard[11] = new StCharlesPlace(11);
-    newBoard[12] = new Tax(12);
+    newBoard[12] = new ElectricCompany(12);
     newBoard[13] = new StatesAvenue(13);
     newBoard[14] = new VirginiaAvenue(14);
-    newBoard[15] = new Rail(15);
+    newBoard[15] = new PennsylvaniaRailroad(15);
     newBoard[16] = new StJamesPlace(16);
     newBoard[17] = new Chest(17);
     newBoard[18] = new TennesseeAvenue(18);
     newBoard[19] = new NewYorkAvenue(19);
-    newBoard[20] = new Tile(20);
+    newBoard[20] = new Tile(20);  //Free parking, not implemented, won't implement
     newBoard[21] = new KentuckyAvenue(21);
     newBoard[22] = new Chance(22);
     newBoard[23] = new IndianaAvenue(23);
     newBoard[24] = new IllinoisAvenue(24);
-    newBoard[25] = new Rail(25);
+    newBoard[25] = new BAndORailroad(25);
     newBoard[26] = new AtlanticAvenue(26);
     newBoard[27] = new VentnorAvenue(27);
-    newBoard[28] = new tax(28);
-    newBoard[29] = new MarvinGardens(29);Tile
-    newBoard[30] = new Tile(30);
+    newBoard[28] = new WaterWorks(28);
+    newBoard[29] = new MarvinGardens(29);
+    newBoard[30] = new Tile(30);  //Go to jail, maybe implment
     newBoard[31] = new PacificAvenue(31);
     newBoard[32] = new NorthCarolinaAvenue(32);
     newBoard[33] = new Chest(33);
     newBoard[34] = new PennsylvaniaAvenue(34);
-    newBoard[35] = new Rail(35);
+    newBoard[35] = new ShortLine(35);
     newBoard[36] = new Chance(36);
     newBoard[37] = new ParkPlace(37);
-    newBoard[38] = new Tax(38);
+    newBoard[38] = new Tile(38); //HARDCODED TAX
     newBoard[39] = new Boardwalk(39);
+    //pass go
 
 
 
@@ -289,8 +395,8 @@ public class Woo{
         game.playTurnAI(game.p3);
       }
       //player 4 turn
-      if(!game.p2.getBankrupt()){
-        game.playTurnAI(game.p2);
+      if(!game.p4.getBankrupt()){
+        game.playTurnAI(game.p4);
       }
 
       turnCounter += 1;

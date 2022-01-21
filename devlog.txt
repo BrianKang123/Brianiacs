@@ -128,4 +128,15 @@ JF :: Updated README with how-to-launch instructions
  2022-01-20
  -------------------------------------------------------------
  BW :: Created v3
+       Renamed St.CharlesPlace.java to StCharlesPlace.java
+       Renamed St.JamesPlace.java to StJamesPlace.java
+       Created ShortLine.java
+       Created PennsylvaniaRailroad.java
+       Created BAndORailroad.java
+       Created ReadingRailroad.java
+       Created Chance.java
+       Created Chest.java
+       Created WaterWorks.java
+       Created ElectricCompany.java
+       Added functionality of Chest, Chance, and taxes to playTurns
 ==============================================================

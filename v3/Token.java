@@ -37,11 +37,9 @@ public class Token{
   }
 
   //decreases the balance by [amount]
-  public boolean subtractBalance(int amount){
+  public void subtractBalance(int amount){
     balance -= amount;
-    return true;
-    //also check if you can do the action at all
-  } //check bankruptcy
+  }
 
   //changes the Token position
   public void changePos(int pos){

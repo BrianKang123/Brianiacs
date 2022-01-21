@@ -1,4 +1,4 @@
-public class St.JamesPlace extends Property{
+public class PennsylvaniaRailroad extends Property{
   //Example format
   /*
     RENT EXPLANATION:
@@ -14,11 +14,11 @@ public class St.JamesPlace extends Property{
 
     Mortgate value is $30
   */
-  public St.JamesPlace(int pos){
+  public PennsylvaniaRailroad(int pos){
     super(pos);
     cost = 60;
     rent = 2;
     set = 0; //change value later
-    name = "St. James Place";
+    name = "Virginia Avenue";
   }
 }
