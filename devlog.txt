@@ -4,49 +4,10 @@ Brian Kang
 Brian Wang
 pd 6
 ---------------------
-<Project Summary / Working Title>
+MONEYPOLY
+Monopoly, but less polished and in java, for an APCS project.
+Most of the rules are the same. DO LATER!
 
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-USAGE:
-* Replace all fields, angle brackets included, with specified info.
-  eg, pd <pd#> --> pd 3
-* Delete this instruction block once all teammates understand usage.
-
-devlog--
-Use keyboard shortcut to jump to end,
- replicate entry template,
- modify appropriately.
-
-zone of reflection--
-Flesh out each category whenever necessary, appropriate.
- Need not be fully filled in until end of project,
- but best done as you go along.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-/////////// Zone of Reflection \\\\\\\\\\\
-------------------------------------------
-OBSTACLES OVERCOME
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-wow we so BOSS bc...
-
-UNRESOLVED ISSUES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-blah blah pesky bug...
-maybe some of these will move into the Obs.Ovrcm section...
-
-COOL STUFF LEARNED
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-wow! oo!...
-d
-MID-DEVELOPMENT DESIGN CHANGES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-we changed ___ to ___ bc...
-
-LESSONS LEARNED
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-tales of wisdom gained...
-||||||||||||||||||||||||||||||||||||||||||
 
  ______   ______   __   __   __       ______   _______
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
@@ -142,9 +103,19 @@ JF :: Updated README with how-to-launch instructions
 
 2022-01-21
 -------------------------------------------------------------
-  BW :: Created v4
-        Fixed issue where turn ends when requesting data about the current tile or deed
-        Implemented rudimentary special tiles (go, just visiting, free parking, go to jail)
-        reminder: Add reference to properties in token
+BW :: Created v4
+      Fixed issue where turn ends when requesting data about the current tile or deed
+      Implemented rudimentary special tiles (go, just visiting, free parking, go to jail)
+      reminder: Add reference to properties in token
+
+2022-01-22
+--------------------------------------------------------------
+BW :: Created v5
+      Made the properties owned by a player referencable from the players
+        - Done through an array of tiles and a counter to count properties owned by the player
+      Fixed an issue making the game forever stuck on your turn
+      Fixed 4 Railroad Line issues
+      Fixed an issue regarding the position of special tiles
+      Fixed an issue regarding the player not being notified of landing on a special tile
 
 ==============================================================
