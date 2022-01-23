@@ -16,8 +16,8 @@ public class MarvinGardens extends Property{
   */
   public MarvinGardens(int pos){
     super(pos);
-    cost = 60;
-    rent = 2;
+    cost = 280;
+    rent = 24;
     set = 0; //change value later
     name = "Marvin Gardens";
   }

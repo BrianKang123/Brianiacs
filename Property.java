@@ -20,9 +20,15 @@ public class Property extends Tile{
   public int buy(Token buyer){
     buyer.subtractBalance(cost);
     owned = buyer.getPlayer();
+    buyer.addOwned(this);
     return buyer.getBalance();
   }
 
+  //Set the owned value of a property to no one
+  public void resetOwned(){
+    owned = null;
+  }
+  
   //returns rent
   public int getRent(){
     return rent;

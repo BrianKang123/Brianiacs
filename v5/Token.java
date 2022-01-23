@@ -6,9 +6,11 @@ public class Token{
   protected Property[] owned;
   protected int properties; //# of properties owned
   protected boolean bankrupt = false;
+  protected int jailed;
 
   public Token(int num){
     number = num;
+    jailed = 0; //0 means not jailed, 1 means jailed this turn, 2, 3, and 4 mean the current turn they are jailed for
     position = 0; //start on go
     balance = 1500; //starting balance is $1500
     owned = new Property[40]; //Lazy coding, just make it big enough
@@ -60,6 +62,16 @@ public class Token{
     bankrupt = state;
   }
 
+  //changes the jailed value
+  public void setJailed(int num){
+    jailed = num;
+  }
+
+  //returns the jailed value
+  public int getJailed(){
+    return jailed;
+  }
+
   //returns the position of the Token
   public int getPos(){
     return position;
@@ -92,6 +104,11 @@ public class Token{
       res += i + 1 + ". " + owned[i].getName() + "\n";
     }
     return res;
+  }
+
+  //returns the array of owned proeprties
+  public Property[] getOwnedArray(){
+    return owned;
   }
 
   //returns the number of properties the player has

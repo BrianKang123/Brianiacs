@@ -3,12 +3,18 @@ public class Token{
   protected int position;
   protected int balance;
   protected int number;
+  protected Property[] owned;
+  protected int properties; //# of properties owned
   protected boolean bankrupt = false;
+  protected int jailed;
 
   public Token(int num){
     number = num;
+    jailed = 0; //0 means not jailed, 1 means jailed this turn, 2, 3, and 4 mean the current turn they are jailed for
     position = 0; //start on go
     balance = 1500; //starting balance is $1500
+    owned = new Property[40]; //Lazy coding, just make it big enough
+    properties = 0;
   }
 
   //Moves the Token forward by [tiles] tiles
@@ -17,7 +23,7 @@ public class Token{
     //Checks if pass go
     if(position > 39){
       balance += 200; //collect $200 if pass go
-      System.out.println("Player " + number + " passed go! You collected $200");
+      System.out.println("Player " + number + " passed go! Collect $200");
       position -= 40;
     }
     return position;
@@ -31,17 +37,20 @@ public class Token{
     subtractBalance(amount);
   }
 
+  //Adds the property to the owned List
+  public void addOwned(Property addition){
+    owned[properties] = addition;
+    properties += 1;
+  }
   //increases the balance by [amount]
   public void addBalance(int amount){
     balance += amount;
   }
 
   //decreases the balance by [amount]
-  public boolean subtractBalance(int amount){
+  public void subtractBalance(int amount){
     balance -= amount;
-    return true;
-    //also check if you can do the action at all
-  } //check bankruptcy
+  }
 
   //changes the Token position
   public void changePos(int pos){
@@ -51,6 +60,16 @@ public class Token{
   //changes the token's bankruptcy state
   public void changeBankrupt(boolean state){
     bankrupt = state;
+  }
+
+  //changes the jailed value
+  public void setJailed(int num){
+    jailed = num;
+  }
+
+  //returns the jailed value
+  public int getJailed(){
+    return jailed;
   }
 
   //returns the position of the Token
@@ -78,5 +97,23 @@ public class Token{
     return bankrupt;
   }
 
+  //returns the player's owned properties
+  public String getOwned(){
+    String res = "OWNED PROPERTIES:\n";
+    for(int i = 0 ; i < properties ; i += 1){
+      res += i + 1 + ". " + owned[i].getName() + "\n";
+    }
+    return res;
+  }
+
+  //returns the array of owned proeprties
+  public Property[] getOwnedArray(){
+    return owned;
+  }
+
+  //returns the number of properties the player has
+  public int getProperties(){
+    return properties;
+  }
 
 }

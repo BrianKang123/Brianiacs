@@ -118,4 +118,31 @@ BW :: Created v5
       Fixed an issue regarding the position of special tiles
       Fixed an issue regarding the player not being notified of landing on a special tile
 
+2022-01-23
+-------------------------------------------------------------
+BW :: Made player input mandatory to conclude a turn
+        - Inspired because the game could often skip like 4 or 5 turns if the player had no choice to do anything, and so would have to scroll up and read it all.
+      Made player input "more" intuitive
+        - Turned player input into only strings
+        - Mainly because it would be a pain to play almost a whole game and have it end because you didn't type something that could be parsed into an int
+      Universally increased rent by 10 times
+        - The game would otherwise be infinite because we don't have sets and houses implemented. It is unfortunate that the game called "monopoly" has no monopolies in it, but for now, this is what is needed.
+      Fixed various typos
+      Increased tax by 2 times
+        - Same reason as rent increase
+      Going to jail now skips your next 3 turns
+      An AI going bankrupt will now return all their properties to the board, unowned.
+      Corrected values for utilities
+        - Rent is decided by 4 times a roll of 2 die.
+      Implemented Chance and Chest cards.
+        - Notable changes: Advance to the nearest railroad and Advance to the nearest utility no longer allow you to buy. They only move you there, and maybe pay rent.
+        - No get out of jail cards.
+        - No cards regarding houses or hotels
+        - Fines and fees are still double
+        - Chairman elections is a flat $300 fee
+        - Birthday is a flat $30 gift
+      All die rolls changed from rolling a 12 sided die to 2 6 sided die
+      Apparentally chance and chest cards are to be renewed instead of taken out of circulation, so some artifacts of no replacement may be seen. Refactoring necessary?
+
+
 ==============================================================

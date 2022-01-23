@@ -16,9 +16,9 @@ public class WaterWorks extends Property{
   */
   public WaterWorks(int pos){
     super(pos);
-    cost = 60;
-    rent = 2;
+    cost = 150;
+    rent = (int)(Math.random() * 6 + Math.random() * 6) * 4;
     set = 0; //change value later
-    name = "Ventnor Avenue";
+    name = "Water Works";
   }
 }

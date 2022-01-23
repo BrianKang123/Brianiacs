@@ -24,6 +24,11 @@ public class Property extends Tile{
     return buyer.getBalance();
   }
 
+  //Set the owned value of a property to no one
+  public void resetOwned(){
+    owned = null;
+  }
+  
   //returns rent
   public int getRent(){
     return rent;

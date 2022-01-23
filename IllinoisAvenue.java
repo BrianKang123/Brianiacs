@@ -16,11 +16,9 @@ public class IllinoisAvenue extends Property{
   */
   public IllinoisAvenue(int pos){
     super(pos);
-    cost = 60;
-    rent = 2;
+    cost = 240;
+    rent = 20;
     set = 0; //change value later
     name = "Illinois Avenue";
   }
 }
-
-atom://teletype/portal/13cd23c8-2958-4946-9b40-354f4618305b

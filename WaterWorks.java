@@ -1,4 +1,4 @@
-public class St.CharlesPlace extends Property{
+public class WaterWorks extends Property{
   //Example format
   /*
     RENT EXPLANATION:
@@ -14,11 +14,11 @@ public class St.CharlesPlace extends Property{
 
     Mortgate value is $30
   */
-  public St.CharlesPlace(int pos){
+  public WaterWorks(int pos){
     super(pos);
-    cost = 60;
-    rent = 2;
+    cost = 150;
+    rent = (int)(Math.random() * 6 + Math.random() * 6) * 4;
     set = 0; //change value later
-    name = "St. Charles Place";
+    name = "Water Works";
   }
 }
