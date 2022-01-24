@@ -143,6 +143,7 @@ BW :: Made player input mandatory to conclude a turn
         - Birthday is a flat $30 gift
       All die rolls changed from rolling a 12 sided die to 2 6 sided die
       Apparentally chance and chest cards are to be renewed instead of taken out of circulation, so some artifacts of no replacement may be seen. Refactoring necessary?
+BK :: Created and Finished MonopolyRuleGuide
 
 
 ==============================================================
